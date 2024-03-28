@@ -1,7 +1,7 @@
 import { useLoaderData, useParams } from "react-router";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { saveBookApplication } from "../utility/localstorage";
+import { getStoredBookApplication, saveBookApplication } from "../utility/localstorage";
 import { useEffect, useState } from "react";
 
 
@@ -15,15 +15,31 @@ const BookDetails = () => {
     const [isWishList, setIsWishList] = useState(false);
 
     useEffect(() =>{
-        const bookDetails  
-    })
+        const bookDetails = getStoredBookApplication();
+        const isBookRead = bookDetails.some(item => item.bookId === idInt && item.item === 'read'); 
+        const isBookWish = bookDetails.some(item => item.bookId === idInt && item.item === 'wish'); 
+        setIsRead(isBookRead);
+        setIsWishList(isBookWish);
+    },[idInt])
     const handleRead = () => {
-        saveBookApplication(bookId);
-        toast('you have applied succesfully');
+        if(isRead){
+            toast('already added')
+        }else{
+            saveBookApplication(idInt, 'read')
+            setIsRead(true)
+            setIsWishList(false)
+            toast('mark as read')
+        }
     }
     const handleWishList = () => {
-        saveBookApplication(bookId);
-        toast('you have already applied ');
+        if(isWishList){
+            toast('already added')
+        }else if(isRead){
+            saveBookApplication(idInt, 'wish')
+            setIsRead(false)
+            setIsWishList(true)
+            toast('mark as wish list')
+        }
     }
     return (
         <div>
