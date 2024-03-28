@@ -20,28 +20,28 @@ const BestSeller = () => {
             <div className="pb-10 rounded-2xl pt-10 border border-gray-300">
                 <div className="p-6 py-12 pt-5 pb-5 bg-gray-100 text-gray-900 dark:text-gray-50 grid">
                     <h1 className="text-start ">Atomic Habits</h1>
-                    <h1 className="text-center">Atomic Habits</h1>
-                    <h1 className="text-end">Rating:4.5</h1>
+                    <h1 className="text-center">James Clear</h1>
+                    <h1 className="text-end">Rating:4.9</h1>
                 </div>
                 <div className="p-6 py-12 pt-5 pb-5 bg-white text-gray-900 dark:text-gray-50 grid">
-                    <h1 className="text-start">Atomic Habits</h1>
-                    <h1 className="text-center">Atomic Habit</h1>
-                    <h1 className="text-end">Rating:4.5</h1>
+                    <h1 className="text-start">The Productive Muslim</h1>
+                    <h1 className="text-center">Mohammed Faris</h1>
+                    <h1 className="text-end">Rating:4.8</h1>
                 </div>
                 <div className="p-6 py-12 pt-5 pb-5 bg-gray-100 text-gray-900 dark:text-gray-50 grid">
-                    <h1 className="text-start">Atomic Habits</h1>
-                    <h1 className="text-center">Atomic Habits</h1>
-                    <h1 className="text-end">Rating:4.5</h1>
+                    <h1 className="text-start">Powerful Focus</h1>
+                    <h1 className="text-center">Thibaut Meurisse</h1>
+                    <h1 className="text-end">Rating:4.7</h1>
                 </div>
                 <div className="p-6 py-12 pt-5 pb-5 bg-bg-white text-gray-900 dark:text-gray-50 grid">
-                    <h1 className="text-start">Atomic Habits</h1>
-                    <h1 className="text-center">Atomic Habits</h1>
-                    <h1 className="text-end">Rating:4.5</h1>
+                    <h1 className="text-start">Immediate action</h1>
+                    <h1 className="text-center">Thibaut Meurisse</h1>
+                    <h1 className="text-end">Rating:4.9</h1>
                 </div>
                 <div className="p-6 py-12 pt-5 pb-5 bg-gray-100 text-gray-900 dark:text-gray-50 grid">
-                    <h1 className="text-start">Atomic Habits</h1>
-                    <h1 className="text-center">Atomic Habits</h1>
-                    <h1 className="text-end">Rating:4.5</h1>
+                    <h1 className="text-start">Master your emotion</h1>
+                    <h1 className="text-center">Thibaut Meurisse</h1>
+                    <h1 className="text-end">Rating:4.6</h1>
                 </div>
             </div>
         </div>

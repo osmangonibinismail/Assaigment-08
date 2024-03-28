@@ -28,8 +28,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-2">
-        <a className="btn">Sign in</a>
-        <a className="btn">Sign up</a>
+        <a className="btn btn-warning bg-green-400">Sign in</a>
+        <a className="btn btn-warning bg-green-400">Sign up</a>
       </div>
     </div>
   );

@@ -124,6 +124,48 @@
         "tag": "#Feeling",
         "publisher": "Doubleday",
         "yearOfPublishing": 2003
+    },
+    {
+        "bookId": 10,
+        "bookName": "The Things you can see only when you slow down",
+        "author": "Haemin Sunim",
+        "image": "/images/12.png",
+        "review": "A gripping mystery thriller that intertwines art, religion, and conspiracy theories in a fast-paced quest for truth.",
+        "totalPages": 454,
+        "rating": 4.2,
+        "category": "Mystery",
+        "tags": "#Affect",
+        "tag": "#Feeling",
+        "publisher": "Doubleday",
+        "yearOfPublishing": 2003
+    },
+    {
+        "bookId": 11,
+        "bookName": "Man's search for meaning",
+        "author": "Victor E. Frankl",
+        "image": "/images/13.png",
+        "review": "A gripping mystery thriller that intertwines art, religion, and conspiracy theories in a fast-paced quest for truth.",
+        "totalPages": 454,
+        "rating": 4.2,
+        "category": "Mystery",
+        "tags": "#Affect",
+        "tag": "#Feeling",
+        "publisher": "Doubleday",
+        "yearOfPublishing": 2003
+    },
+    {
+        "bookId": 12,
+        "bookName": "The japanies secret to a long and happy life",
+        "author": "IKIGI",
+        "image": "/images/14.png",
+        "review": "A gripping mystery thriller that intertwines art, religion, and conspiracy theories in a fast-paced quest for truth.",
+        "totalPages": 454,
+        "rating": 4.2,
+        "category": "Mystery",
+        "tags": "#Affect",
+        "tag": "#Feeling",
+        "publisher": "Doubleday",
+        "yearOfPublishing": 2003
     }
 ]
   
