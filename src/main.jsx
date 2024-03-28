@@ -10,6 +10,9 @@ import Hoom from './components/Root/Hoom/Hoom';
 import Listed from './components/Root/Listed/Listed';
 import ErrorPage from './components/Root/ErrorPage/ErrorPage';
 import BookDetails from './components/Root/BookDetails/BookDetails';
+import About from './components/Root/About/About';
+import BestSeller from './components/Root/BestSeller/BestSeller';
+import LineChart from './components/Root/LineChart/LineChart';
 
 
 const router = createBrowserRouter([
@@ -31,6 +34,18 @@ const router = createBrowserRouter([
         path: "/bookDetails/:bookId",
         element: <BookDetails></BookDetails>,
         loader: () => fetch("/book.json")
+      },
+      {
+        path: "/about",
+        element: <About></About>
+      },
+      {
+        path: "/bestSeller",
+        element: <BestSeller></BestSeller>
+      },
+      {
+        path: "/pages",
+        element: <LineChart></LineChart>
       }
     ],
   },
