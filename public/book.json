@@ -131,13 +131,13 @@
         "author": "Haemin Sunim",
         "image": "/images/12.png",
         "review": "A gripping mystery thriller that intertwines art, religion, and conspiracy theories in a fast-paced quest for truth.",
-        "totalPages": 454,
-        "rating": 4.2,
+        "totalPages": 444,
+        "rating": 4.3,
         "category": "Mystery",
         "tags": "#Affect",
         "tag": "#Feeling",
         "publisher": "Doubleday",
-        "yearOfPublishing": 2003
+        "yearOfPublishing": 2005
     },
     {
         "bookId": 11,
@@ -145,13 +145,13 @@
         "author": "Victor E. Frankl",
         "image": "/images/13.png",
         "review": "A gripping mystery thriller that intertwines art, religion, and conspiracy theories in a fast-paced quest for truth.",
-        "totalPages": 454,
-        "rating": 4.2,
+        "totalPages": 432,
+        "rating": 4.6,
         "category": "Mystery",
         "tags": "#Affect",
         "tag": "#Feeling",
         "publisher": "Doubleday",
-        "yearOfPublishing": 2003
+        "yearOfPublishing": 2008
     },
     {
         "bookId": 12,
@@ -159,8 +159,8 @@
         "author": "IKIGI",
         "image": "/images/14.png",
         "review": "A gripping mystery thriller that intertwines art, religion, and conspiracy theories in a fast-paced quest for truth.",
-        "totalPages": 454,
-        "rating": 4.2,
+        "totalPages": 354,
+        "rating": 4.0,
         "category": "Mystery",
         "tags": "#Affect",
         "tag": "#Feeling",
