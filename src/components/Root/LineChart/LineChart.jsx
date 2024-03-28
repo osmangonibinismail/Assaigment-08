@@ -1,38 +1,10 @@
 
 
-// const LineChart = () => {
-//     return (
-//         <div>
-//             <div>
-//                 <div className="p-6 py-12 bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
-//                     <div className="container mx-auto">
-//                         <div className="flex flex-col lg:flex-row items-center justify-between">
-//                             <h2 className="text-center text-6xl tracking-tighter font-bold">Up to
-//                                 <br className="sm:hidden" />50% Off
-//                             </h2>
-//                             <div className="space-x-2 text-center py-2 lg:py-0">
-//                                 <span>Plus free shipping! Use code:</span>
-//                                 <span className="font-bold text-lg">MAMBA</span>
-//                             </div>
-//                             <a href="#" rel="noreferrer noopener" className="px-5 mt-4 lg:mt-0 py-3 rounded-md border block bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50 border-gray-400 dark:border-gray-600">Shop Now</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div>
-
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default LineChart;
-
 
 import React from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
 
-const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
+const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink', 'blue', 'red', '#00C49F', 'decoration-teal-400', 'decoration-sky-700','#00C49F'];
 
 const data = [
   {
@@ -86,6 +58,24 @@ const data = [
   {
     name: 'Master your emotion',
     uv: 454,
+    pv: 4300,
+    amt: 2100,
+  },
+  {
+    name: 'Master your emotion',
+    uv: 444,
+    pv: 4300,
+    amt: 2100,
+  },
+  {
+    name: 'Master your emotion',
+    uv: 432,
+    pv: 4300,
+    amt: 2100,
+  },
+  {
+    name: 'Master your emotion',
+    uv: 354,
     pv: 4300,
     amt: 2100,
   },

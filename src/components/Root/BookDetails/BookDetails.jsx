@@ -2,6 +2,7 @@ import { useLoaderData, useParams } from "react-router";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { saveBookApplication } from "../utility/localstorage";
+import { useEffect, useState } from "react";
 
 
 
@@ -10,9 +11,12 @@ const BookDetails = () => {
     const { bookId } = useParams();
     const idInt = parseInt(bookId);
     const book = books.find(book => book.bookId === idInt);
-    console.log(book);
+    const [isRead, setIsRead] = useState(false);
+    const [isWishList, setIsWishList] = useState(false);
 
-
+    useEffect(() =>{
+        const bookDetails  
+    })
     const handleRead = () => {
         saveBookApplication(bookId);
         toast('you have applied succesfully');
