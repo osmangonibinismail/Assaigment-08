@@ -15,8 +15,8 @@ const {bookId} = book;
                     <button className="btn btn-sm bg-green-100 text-green-500 ml-5">{book.tag}</button>
                 </div>
                 <h1 className=" card-title pt-2">{book.bookName}</h1>
-                <p className=" card-compact pt-2">Author: {book.author}</p>
-                <div className="flex justify-between pb-6 pt-7">
+                <p className=" card-compact pt-2 pb-5 text-lg">Author: {book.author}</p>
+                <div className="flex justify-between pb-6 pt-5 border-t-2">
                     <p>{book.category}</p>
                     <div className="flex gap-2"> 
                         <p>{book.rating}</p>

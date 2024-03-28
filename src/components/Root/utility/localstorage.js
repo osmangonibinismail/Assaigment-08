@@ -8,8 +8,9 @@ const getStoredBookApplication = () =>{
 }
 
 const saveBookApplication = bookId =>{
+    console.log(bookId);
     const storedBookApplications = getStoredBookApplication();
-    const exists = storedBookApplications.find(book => book.bookId === bookId);
+    const exists = storedBookApplications.find(book => book.bookId == bookId);
     if(!exists){
         storedBookApplications.push(bookId);
         localStorage.setItem('book-applications',JSON.stringify
