@@ -4,41 +4,48 @@ import { getStoredBookApplication } from "../utility/localstorage";
 
 const Listed = () => {
     const books = useLoaderData();
-    
-    const [listedBooks, setListedBooks] = useState([]);
-    // const [displayBooks, setDisplayBooks] = useState([]);
 
-    // const handleBooksFilter = filter =>{
-    //     if(filter === 'rating'){
-    //         setDisplayBooks(appliedBooks);
-    //     }
-        
-    //     else if(filter === 'Number of Pages'){
-    //         const numberOfPagesBooks = appliedBooks.filter(book => book.totalPages === 'Number of Pages');
-    //         setDisplayBooks(numberOfPagesBooks);
-    //     }
-    //     else if(filter === 'Publishing year'){
-    //         const publishingYearBooks = appliedBooks.filter(book => book.yearOfPublishing === 'Publishing year');
-    //         setDisplayBooks(publishingYearBooks);
-    //     }
-    // }
+    const [listedBooks, setListedBooks] = useState([]);
+    const [displayBooks, setDisplayBooks] = useState([]);
+    const [wishListedBooks, setWishListedBooks] = useState([]);
+    const [wishDisplayBooks, setWishDisplayBooks] = useState([]);
+
+    const handleButton = item => {
+
+    }
+    const handleRating = item => {
+
+    }
+    const handlePages = item => {
+
+    }
+    const handleYear = item => {
+
+    }
 
     useEffect(() => {
         const storedBookIds = getStoredBookApplication();
         if (books.length > 0) {
-            // const booksApplied = books.filter(book => storedBookIds.includes(book.id))
-            // console.log(books, storedBookIds, booksApplied)
             const listedBooks = [];
-            for (const bookId of storedBookIds) {
-                const book = books.find(book => book.bookId == bookId)
+            const listedWishList = [];
+
+
+            for (const bookStore of storedBookIds) {
+                const book = books.find(book => book.bookId === bookStore.bookId)
                 if (book) {
-                    listedBooks.push(book)
+                    if (bookStore.item === 'read') {
+                        listedBooks.push(book)
+                    } else if (bookStore.item === 'wish') {
+                        listedWishList.push(book)
+                    }
                 }
             }
 
             setListedBooks(listedBooks);
-            // setDisplayBooks(displayBooks);
-            // console.log(books, storedBookIds, booksApplied)
+            setDisplayBooks(listedBooks);
+            setWishListedBooks(listedWishList);
+            setWishDisplayBooks(listedWishList);
+
         }
     }, [])
     return (
@@ -69,25 +76,94 @@ const Listed = () => {
                         <li className="text-lg"><a>Rating</a></li>
                         <li className="text-lg"><a>Number of Pages</a></li>
                         <li className="text-lg"><a>Publishing year</a></li>
-                        {/* <li onClick={() => handleBooksFilter('rating')} className="text-lg"><a>Rating</a></li>
-                        <li onClick={() => handleBooksFilter('Number of Pages')} className="text-lg"><a>Number of Pages</a></li>
-                        <li onClick={() => handleBooksFilter('Publishing year')} className="text-lg"><a>Publishing year</a></li> */}
+
                     </ul>
                 </details>
-                {/* <ul>
-                    {
-                        displayBooks.map(book => <li key={book.bookId}><span>{book.bookName}{book.author}: {book.image}:{book.image}{book.totalPages}</span></li>)
-                    }
-                </ul> */}
 
             </div>
-            <div className="card grid md:grid-cols-3 gap-10 pt-20">
-                <div className="card bg-slate-100 px-5 pb-5">
-                    {/* <img src={book.image} alt="image" className=" pt-7 pb-7" /> */}
+            <div className="w-full">
+                <div role="tablist" className="tabs tabs-lifted">
+                    <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Read Book" checked />
+                    <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                        {
+                            displayBooks.map(book => (
+                                <div className="pt-10" key={book}>
+                                    <div className="hero bg-base-200 border border-collapse grid md:grid-cols-1/3 gap-10 pt-2 pb-3 border-spacing-6 border-indigo-400  border-opacity-30 rounded-2xl">
+                                        <div className="hero-content flex-col lg:flex-row gap-20">
+                                            <div className="card bg-slate-100 px-5 pb-5 max-w-sm mx-auto group border border-indigo-400  border-opacity-30 hover:no-underline focus:no-underline">
+                                                <img src={book.image} alt="image" className=" pt-7 pb-7" />
+                                            </div>
+                                            <div className=" md:grid-cols-2/3">
+                                                <h1 className="text-3xl font-bold">{book.bookName}</h1>
+                                                <h3 className="text-2xl font-bold">{book.author}</h3>
+                                                <p className="text-xl font-bold"></p>
+                                                <div className="flex justify-between pb-6 pt-5">
+                                                    <p className="font-bold">Tag:</p> <button className="btn btn-sm bg-green-100 text-green-500">{book.tags}</button>
+                                                    <button className="btn btn-sm bg-green-100 text-green-500 ml-2">{book.tag}</button>
+                                                    <p className="ml-5"><a className="font-bold">Year of Publishing:</a>{book.yearOfPublishing}
+                                                    </p>
+                                                </div>
+                                                <div className="flex justify-between pb-6 pt-5">
+                                                    <h3 className="gap-2"><a className="font-bold ">Publisher:</a> {book.publisher}</h3>
+                                                    <h3 className="gap-2"><a className="font-bold">Page:</a>{book.totalPages}</h3>
+                                                </div>
+                                                <div className="flex justify-between pb-6 pt-5 border-t-2">
+                                                    <button className="btn btn-sm bg-orange-200 text-orange-500 ml-2 rounded-3xl">category: {book.category}</button>
+                                                    <button className="btn btn-sm bg-blue-200 text-blue-500 ml-2 rounded-3xl">rating:{book.rating}</button>
+                                                    <button className="btn btn-sm bg-green-500 text-white ml-2 rounded-3xl">view details</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+
+
+                    <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Wish List" />
+                    <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                        {
+                            wishDisplayBooks.map(book => (
+                                <div className="pt-10" key={book}>
+                                    <div className="hero bg-base-200 border border-collapse grid md:grid-cols-1/3 gap-10 pt-2 pb-3 border-spacing-6 border-indigo-400  border-opacity-30 rounded-2xl">
+                                        <div className="hero-content flex-col lg:flex-row gap-20">
+                                            <div className="card bg-slate-100 px-5 pb-5 max-w-sm mx-auto group border border-indigo-400  border-opacity-30 hover:no-underline focus:no-underline">
+                                                <img src={book.image} alt="image" className=" pt-7 pb-7" />
+                                            </div>
+                                            <div className=" md:grid-cols-2/3">
+                                                <h1 className="text-3xl font-bold">{book.bookName}</h1>
+                                                <h3 className="text-2xl font-bold">{book.author}</h3>
+                                                <p className="text-xl font-bold"></p>
+                                                <div className="flex justify-between pb-6 pt-5">
+                                                    <p className="font-bold">Tag:</p> <button className="btn btn-sm bg-green-100 text-green-500">{book.tags}</button>
+                                                    <button className="btn btn-sm bg-green-100 text-green-500 ml-2">{book.tag}</button>
+                                                    <p className="ml-5"><a className="font-bold">Year of Publishing:</a>{book.yearOfPublishing}
+                                                    </p>
+                                                </div>
+                                                <div className="flex justify-between pb-6 pt-5">
+                                                    <h3 className="gap-2"><a className="font-bold ">Publisher:</a> {book.publisher}</h3>
+                                                    <h3 className="gap-2"><a className="font-bold">Page:</a>{book.totalPages}</h3>
+                                                </div>
+                                                <div className="flex justify-between pb-6 pt-5 border-t-2">
+                                                    <button className="btn btn-sm bg-orange-200 text-orange-500 ml-2 rounded-3xl">category: {book.category}</button>
+                                                    <button className="btn btn-sm bg-blue-200 text-blue-500 ml-2 rounded-3xl">rating:{book.rating}</button>
+                                                    <button className="btn btn-sm bg-green-500 text-white ml-2 rounded-3xl">view details</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+
+
                 </div>
-                <div className="card bg-slate-100 px-5 pb-5">i am</div>
             </div>
-            
+
         </div>
     );
 };

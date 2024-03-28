@@ -4,7 +4,7 @@
 import React from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
 
-const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink', 'blue', 'red', '#00C49F', 'decoration-teal-400', 'decoration-sky-700','#00C49F'];
+const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink', 'gray', 'red', '#00C49F', '#0088FE', '#FFBB28','blue'];
 
 const data = [
   {

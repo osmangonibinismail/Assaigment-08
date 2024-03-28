@@ -27,7 +27,7 @@ const BookDetails = () => {
         }else{
             saveBookApplication(idInt, 'read')
             setIsRead(true)
-            setIsWishList(false)
+            setIsWishList(true)
             toast('mark as read')
         }
     }
@@ -36,8 +36,8 @@ const BookDetails = () => {
             toast('already added')
         }else if(isRead){
             saveBookApplication(idInt, 'wish')
+            setIsWishList(false)
             setIsRead(false)
-            setIsWishList(true)
             toast('mark as wish list')
         }
     }
@@ -59,7 +59,7 @@ const BookDetails = () => {
                     </div>
                 </div>
             </div>
-            <div className="grid md:grid-cols-2 gap-10 lg:grid-cols-01 pt-20">
+            <div className="grid md:grid-cols-2 gap-10 lg:grid-cols-01 pt-20 border-spacing-6">
                 <div className="card bg-slate-100 px-5 pb-5">
                     <img src={book.image} alt="image" className=" pt-7 pb-7" />
                 </div>
