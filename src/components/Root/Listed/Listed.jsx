@@ -5,7 +5,7 @@ import { getStoredBookApplication } from "../utility/localstorage";
 const Listed = () => {
     const books = useLoaderData();
     
-    const [listedBooks, setListedBooks] = useState([]);
+    const [listedBooks, setListedBooks] = useState([])
     // const [displayBooks, setDisplayBooks] = useState([]);
 
     // const handleBooksFilter = filter =>{
