@@ -14,17 +14,17 @@ const BookDetails = () => {
     const [isRead, setIsRead] = useState(false);
     const [isWishList, setIsWishList] = useState(false);
 
-    useEffect(() =>{
+    useEffect(() => {
         const bookDetails = getStoredBookApplication();
-        const isBookRead = bookDetails.some(item => item.bookId === idInt && item.item === 'read'); 
-        const isBookWish = bookDetails.some(item => item.bookId === idInt && item.item === 'wish'); 
+        const isBookRead = bookDetails.some(item => item.bookId === idInt && item.item === 'read');
+        const isBookWish = bookDetails.some(item => item.bookId === idInt && item.item === 'wish');
         setIsRead(isBookRead);
         setIsWishList(isBookWish);
-    },[idInt])
+    }, [idInt])
     const handleRead = () => {
-        if(isRead){
+        if (isRead) {
             toast('already added')
-        }else{
+        } else {
             saveBookApplication(idInt, 'read')
             setIsRead(true)
             setIsWishList(true)
@@ -32,13 +32,17 @@ const BookDetails = () => {
         }
     }
     const handleWishList = () => {
-        if(isWishList){
+        if (isWishList) {
             toast('already added')
-        }else if(isRead){
+        } 
+        else if (isRead) {
+            toast('already added as read cannot add wiseList')
+        }
+        else{
             saveBookApplication(idInt, 'wish')
-            setIsWishList(false)
+            setIsWishList(true)
             setIsRead(false)
-            toast('mark as wish list')
+            toast('added to wiseList')
         }
     }
     return (
@@ -50,9 +54,14 @@ const BookDetails = () => {
                             <h2 className="text-center text-6xl tracking-tighter font-bold">Up to
                                 <br className="sm:hidden" />50% Off
                             </h2>
-                            <div className="space-x-2 text-center py-2 lg:py-0">
-                                <span>Plus free shipping! Use code:</span>
-                                <span className="font-bold text-lg">MAMBA</span>
+                            <div>
+                                <div className="space-x-2 text-center py-2 lg:py-0">
+                                    <span>Plus free shipping! Use code:</span>
+                                    <span className="font-bold text-lg">OSMAN314</span>
+                                </div>
+                                <div className="font-bold">
+                                    valid date: 15-12-2024
+                                </div>
                             </div>
                             <a href="#" rel="noreferrer noopener" className="px-5 mt-4 lg:mt-0 py-3 rounded-md border block bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50 border-gray-400 dark:border-gray-600">Shop Now</a>
                         </div>

@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import { getStoredBookApplication } from "../utility/localstorage";
+import { IoIosContacts } from "react-icons/io";
+import { SiGooglemaps } from "react-icons/si";
+import { RiPagesLine } from "react-icons/ri";
 
 const Listed = () => {
     const books = useLoaderData();
@@ -10,17 +13,55 @@ const Listed = () => {
     const [wishListedBooks, setWishListedBooks] = useState([]);
     const [wishDisplayBooks, setWishDisplayBooks] = useState([]);
 
+    const [sortBy, setSortBy] = useState([]);
+    const [sortDes, setSortDes] = useState(['des']);
+
     const handleButton = item => {
-
+        setSortBy(item)
+        // if(item === 'all'){
+        //     setDisplayBooks(listedBooks);
+        //     setWishDisplayBooks(wishListedBooks);
+        // }
+        if(item === 'rat') {
+            handleRating(listedBooks, setDisplayBooks);
+            handleRating(wishListedBooks, setWishDisplayBooks);
+        } else if(item === 'page'){
+            handlePages(listedBooks, setDisplayBooks);
+            handlePages(wishListedBooks, setWishDisplayBooks);
+        } else if(item === 'year'){
+            handleYear(listedBooks, setDisplayBooks);
+            handleYear(wishListedBooks, setWishDisplayBooks);
+        }
     }
-    const handleRating = item => {
-
+    const handleRating = (books, setItem) => {
+        const sortBooks = [...books].sort((x,y) => {
+            if (sortDes === 'des') {
+                return y.rating - x.rating;
+            } else{
+                return x.rating - y.rating;
+            }
+        })
+        setItem(sortBooks)
     }
-    const handlePages = item => {
-
+    const handlePages = (books, setItem) => {
+        const sortBooks = [...books].sort((x,y) => {
+            if (sortDes === 'des') {
+                return y.totalPages - x.totalPages;
+            } else{
+                return x.totalPages - y.totalPages;
+            }
+        })
+        setItem(sortBooks)
     }
-    const handleYear = item => {
-
+    const handleYear = (books, setItem) => {
+        const sortBooks = [...books].sort((x,y) => {
+            if (sortDes === 'des') {
+                return y.yearOfPublishing - x.yearOfPublishing;
+            } else{
+                return x.yearOfPublishing - y.yearOfPublishing;
+            }
+        })
+        setItem(sortBooks)
     }
 
     useEffect(() => {
@@ -50,20 +91,23 @@ const Listed = () => {
     }, [])
     return (
         <div>
-            <div>
-                <div>
-                    <div className="p-6 py-12 bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
-                        <div className="container mx-auto">
-                            <div className="flex flex-col lg:flex-row items-center justify-between">
-                                <h2 className="text-center text-6xl tracking-tighter font-bold">Up to
-                                    <br className="sm:hidden" />50% Off
-                                </h2>
+            <div className="pt-10">
+                <div className="p-6 py-12 bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">
+                    <div className="container mx-auto">
+                        <div className="flex flex-col lg:flex-row items-center justify-between">
+                            <h2 className="text-center text-6xl tracking-tighter font-bold">Up to
+                                <br className="sm:hidden" />50% Off
+                            </h2>
+                            <div>
                                 <div className="space-x-2 text-center py-2 lg:py-0">
                                     <span>Plus free shipping! Use code:</span>
-                                    <span className="font-bold text-lg">MAMBA</span>
+                                    <span className="font-bold text-lg">OSMAN314</span>
                                 </div>
-                                <a href="#" rel="noreferrer noopener" className="px-5 mt-4 lg:mt-0 py-3 rounded-md border block bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50 border-gray-400 dark:border-gray-600">Shop Now</a>
+                                <div className="font-bold">
+                                    valid date: 15-12-2024
+                                </div>
                             </div>
+                            <a href="#" rel="noreferrer noopener" className="px-5 mt-4 lg:mt-0 py-3 rounded-md border block bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50 border-gray-400 dark:border-gray-600">Shop Now</a>
                         </div>
                     </div>
                 </div>
@@ -72,10 +116,10 @@ const Listed = () => {
             <div className="text-center">
                 <details className="dropdown">
                     <summary className="m-1 btn bg-green-500 text-white">Sort by</summary>
-                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 bg-gray-100 rounded-box w-52">
-                        <li className="text-lg"><a>Rating</a></li>
-                        <li className="text-lg"><a>Number of Pages</a></li>
-                        <li className="text-lg"><a>Publishing year</a></li>
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-gray-100 rounded-box w-52">
+                        <li className="text-lg"><a onClick={() => handleButton('rat')}>Rating</a></li>
+                        <li className="text-lg"><a onClick={() => handleButton('page')}>Number of Pages</a></li>
+                        <li className="text-lg"><a onClick={() => handleButton('year')}>Publishing year</a></li>
 
                     </ul>
                 </details>
@@ -100,12 +144,12 @@ const Listed = () => {
                                                 <div className="flex justify-between pb-6 pt-5">
                                                     <p className="font-bold">Tag:</p> <button className="btn btn-sm bg-green-100 text-green-500">{book.tags}</button>
                                                     <button className="btn btn-sm bg-green-100 text-green-500 ml-2">{book.tag}</button>
-                                                    <p className="ml-5"><a className="font-bold">Year of Publishing:</a>{book.yearOfPublishing}
-                                                    </p>
+                                                    <p className="ml-5"><button><SiGooglemaps /></button><a className="font-bold">Year of Publishing: </a>{book.yearOfPublishing}
+                                                        </p>
                                                 </div>
                                                 <div className="flex justify-between pb-6 pt-5">
-                                                    <h3 className="gap-2"><a className="font-bold ">Publisher:</a> {book.publisher}</h3>
-                                                    <h3 className="gap-2"><a className="font-bold">Page:</a>{book.totalPages}</h3>
+                                                    <h3 className="gap-2"><a className="font-bold "><button><IoIosContacts /></button>Publisher: </a> {book.publisher}</h3>
+                                                    <h3 className="gap-2"><a className="font-bold gap-2"><button><RiPagesLine /></button>Page: </a>{book.totalPages}</h3>
                                                 </div>
                                                 <div className="flex justify-between pb-6 pt-5 border-t-2">
                                                     <button className="btn btn-sm bg-orange-200 text-orange-500 ml-2 rounded-3xl">category: {book.category}</button>
