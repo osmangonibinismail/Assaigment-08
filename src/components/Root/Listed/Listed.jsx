@@ -4,6 +4,7 @@ import { getStoredBookApplication } from "../utility/localstorage";
 import { IoIosContacts } from "react-icons/io";
 import { SiGooglemaps } from "react-icons/si";
 import { RiPagesLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const Listed = () => {
     const books = useLoaderData();
@@ -18,46 +19,42 @@ const Listed = () => {
 
     const handleButton = item => {
         setSortBy(item)
-        // if(item === 'all'){
-        //     setDisplayBooks(listedBooks);
-        //     setWishDisplayBooks(wishListedBooks);
-        // }
-        if(item === 'rat') {
+        if (item === 'rat') {
             handleRating(listedBooks, setDisplayBooks);
             handleRating(wishListedBooks, setWishDisplayBooks);
-        } else if(item === 'page'){
+        } else if (item === 'page') {
             handlePages(listedBooks, setDisplayBooks);
             handlePages(wishListedBooks, setWishDisplayBooks);
-        } else if(item === 'year'){
+        } else if (item === 'year') {
             handleYear(listedBooks, setDisplayBooks);
             handleYear(wishListedBooks, setWishDisplayBooks);
         }
     }
     const handleRating = (books, setItem) => {
-        const sortBooks = [...books].sort((x,y) => {
+        const sortBooks = [...books].sort((x, y) => {
             if (sortDes === 'des') {
                 return y.rating - x.rating;
-            } else{
+            } else {
                 return x.rating - y.rating;
             }
         })
         setItem(sortBooks)
     }
     const handlePages = (books, setItem) => {
-        const sortBooks = [...books].sort((x,y) => {
+        const sortBooks = [...books].sort((x, y) => {
             if (sortDes === 'des') {
                 return y.totalPages - x.totalPages;
-            } else{
+            } else {
                 return x.totalPages - y.totalPages;
             }
         })
         setItem(sortBooks)
     }
     const handleYear = (books, setItem) => {
-        const sortBooks = [...books].sort((x,y) => {
+        const sortBooks = [...books].sort((x, y) => {
             if (sortDes === 'des') {
                 return y.yearOfPublishing - x.yearOfPublishing;
-            } else{
+            } else {
                 return x.yearOfPublishing - y.yearOfPublishing;
             }
         })
@@ -145,7 +142,7 @@ const Listed = () => {
                                                     <p className="font-bold">Tag:</p> <button className="btn btn-sm bg-green-100 text-green-500">{book.tags}</button>
                                                     <button className="btn btn-sm bg-green-100 text-green-500 ml-2">{book.tag}</button>
                                                     <p className="ml-5"><button><SiGooglemaps /></button><a className="font-bold">Year of Publishing: </a>{book.yearOfPublishing}
-                                                        </p>
+                                                    </p>
                                                 </div>
                                                 <div className="flex justify-between pb-6 pt-5">
                                                     <h3 className="gap-2"><a className="font-bold "><button><IoIosContacts /></button>Publisher: </a> {book.publisher}</h3>
@@ -154,7 +151,9 @@ const Listed = () => {
                                                 <div className="flex justify-between pb-6 pt-5 border-t-2">
                                                     <button className="btn btn-sm bg-orange-200 text-orange-500 ml-2 rounded-3xl">category: {book.category}</button>
                                                     <button className="btn btn-sm bg-blue-200 text-blue-500 ml-2 rounded-3xl">rating:{book.rating}</button>
-                                                    <button className="btn btn-sm bg-green-500 text-white ml-2 rounded-3xl">view details</button>
+                                                    <Link to={`/bookDetails/${book.bookId}`}>
+                                                        <button className="btn btn-sm bg-green-500 text-white ml-2 rounded-3xl">view details</button>
+                                                    </Link>
                                                 </div>
 
                                             </div>

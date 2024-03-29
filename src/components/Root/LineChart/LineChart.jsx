@@ -1,85 +1,12 @@
 
-
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { getStoredBookApplication } from '../utility/localstorage';
 
-const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink', 'gray', 'red', '#00C49F', '#0088FE', '#FFBB28','blue'];
+const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink', 'gray', 'red', '#00C49F', '#0088FE', '#FFBB28', 'blue'];
 
-const data = [
-  {
-    name: 'The Productive Muslim',
-    uv: 180,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Atomic Habits',
-    uv: 281,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Deep Work',
-    uv: 328,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'The Silent Patient',
-    uv: 224,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Powerful Focus',
-    uv: 432,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Strategic Mindset',
-    uv: 310,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Immediate action',
-    uv: 1178,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Dopamine Detox',
-    uv: 197,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Master your emotion',
-    uv: 454,
-    pv: 4300,
-    amt: 2100,
-  },
-  {
-    name: 'Master your emotion',
-    uv: 444,
-    pv: 4300,
-    amt: 2100,
-  },
-  {
-    name: 'Master your emotion',
-    uv: 432,
-    pv: 4300,
-    amt: 2100,
-  },
-  {
-    name: 'Master your emotion',
-    uv: 354,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+
 
 const getPath = (x, y, width, height) => {
   return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
@@ -94,30 +21,48 @@ const TriangleBar = (props) => {
   return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
 };
 
-export default function App() {
-  return (
-    <BarChart
-      width={1150}
-      height={850}
-      data={data}
-      margin={{
-        top: 20,
-        right: 30,
-        left: 20,
-        bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Bar dataKey="uv" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
-        {data.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index % 20]} />
-        ))}
-      </Bar>
-    </BarChart>
-  );
-}
 
-App.demoUrl = 'https://codesandbox.io/s/bar-chart-with-customized-shape-dusth';
+const LineChart = () => {
+  const books = useLoaderData()
+  const [readBooks, setReadBooks] = useState([])
+  useEffect(()=>{
+    const bookDetails = getStoredBookApplication()
+    if (books.length > 0){
+      const markBook = []
+     for(const storedBook of bookDetails){
+      const book = books.find(book => book.bookId === storedBook.bookId)
+      if (book && storedBook.item === 'read') {
+        markBook.push(book)
+      }
+     }
+     setReadBooks(markBook);
+    }
+  },[books])
+  return (
+    <div>
+      <BarChart
+        width={1150}
+        height={850}
+        data={readBooks}
+        margin={{
+          top: 20,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="bookName" />
+        <YAxis />
+        <Bar dataKey="totalPages" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
+          {readBooks.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={colors[index % 20]} />
+          ))}
+        </Bar>
+      </BarChart>
+    </div>
+  )
+}
+export default LineChart;
+
 

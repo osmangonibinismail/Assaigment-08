@@ -7,7 +7,7 @@ const {bookId} = book;
 
     return (
         <Link to={`/bookDetails/${bookId}`}>
-            <div className="card bg-slate-100 px-5 pb-5 max-w-sm mx-auto group border border-indigo-400 hover:scale-105  hover:border-indigo-200 border-opacity-30 hover:no-underline focus:no-underline">
+            <div className="card bg-slate-100 px-5 pb-5  mx-auto group border border-indigo-400 hover:scale-105  hover:border-indigo-200 border-opacity-30 hover:no-underline focus:no-underline">
                 
                 <img src={book.image} alt="bookimage" className=" pt-7 pb-7" />
                 <div className="gap-10">
